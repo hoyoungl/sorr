@@ -1,0 +1,17 @@
+-- migrate:up
+
+CREATE TABLE user (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    nickname VARCHAR(20) UNIQUE,
+    password VARCHAR(255),
+    auth_provider VARCHAR(20),
+    is_active BOOLEAN DEFAULT TRUE,
+    last_login_at TIMESTAMP NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+ 
+ -- migrate:down
+
+DROP TABLE user;
